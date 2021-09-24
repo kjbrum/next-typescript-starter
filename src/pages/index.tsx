@@ -1,5 +1,6 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
+import { Button, Heading, Link } from '@/components/core'
 
 const Home: NextPage = () => {
     return (
@@ -13,8 +14,13 @@ const Home: NextPage = () => {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 
-            <main>
-                <h1>Welcome to the Simple Focus Next.js Starter!</h1>
+            <main className="p-8 text-center">
+                <Heading className="pb-4">
+                    Welcome to the Simple Focus Next.js Starter!
+                </Heading>
+                <Link href="patterns">
+                    <Button variant="filled">View Patterns</Button>
+                </Link>
             </main>
         </>
     )

@@ -13,12 +13,20 @@ const breakpoints = {
 const fluidValue = (min, max) => polished.between(min, max, '20rem', '90rem')
 
 module.exports = {
-    purge: [
-        './pages/**/*.{js,jsx,ts,tsx}',
-        './components/**/*.{js,jsx,ts,tsx}',
-        './lib/**/*.{js,jsx,ts,tsx}',
-        './tailwind.variants.js',
-    ],
+    purge: {
+        content: [
+            './pages/**/*.{js,jsx,ts,tsx}',
+            './components/**/*.{js,jsx,ts,tsx}',
+            './lib/**/*.{js,jsx,ts,tsx}',
+            './tailwind.variants.js',
+        ],
+        options: {
+            // Patterns for dynamically driven classes
+            whitelistPatterns: [
+                /aspect-(w|h)-(\d{1,16})/, // aspect ratio
+            ],
+        },
+    },
     darkMode: false, // Options: false/media/class
     theme: {
         extend: {

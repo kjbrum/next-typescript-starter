@@ -1,4 +1,3 @@
-const path = require('path')
 const defaultImageSizes = [80, 160, 320, 480, 768, 1024, 1280]
 
 /** @type {import('next').NextConfig} */
@@ -10,10 +9,6 @@ const nextConfig = {
             ...defaultImageSizes.map(size => size * 2),
         ],
         domains: ['source.unsplash.com'],
-    },
-    webpack(config) {
-        config.resolve.alias['@'] = path.resolve(__dirname)
-        return config
     },
 }
 
