@@ -1,8 +1,8 @@
 import { useState } from 'react'
+import type { ReactElement } from 'react'
+import type { NextPage } from 'next'
 import cx from 'classnames'
-
-// TODO
-// import { Container } from '@/components/general'
+import BaseLayout from '@/layouts/BaseLayout'
 import {
     // Base
     Box,
@@ -26,8 +26,7 @@ import {
     Checkbox,
     Switch,
 } from '@/components/core'
-
-const Container = ({ children }) => <div>{children}</div>
+import { Container } from '@/components/common'
 
 const SectionHeading = ({ title, ...props }) => (
     <Heading variant="h3" className="mt-12 mb-2" {...props}>
@@ -41,7 +40,7 @@ const Card = ({ className, children, ...props }) => (
     </Box>
 )
 
-const Patterns = () => {
+const Patterns: NextPage = () => {
     const [switchOn, setSwitchOn] = useState(false)
 
     return (
@@ -314,6 +313,17 @@ const Patterns = () => {
                 />
             </Box>
         </Container>
+    )
+}
+
+Patterns.getLayout = function getLayout(page: ReactElement) {
+    return (
+        <BaseLayout
+            title="Patterns"
+            description="Patterns for use with the Simple Focus Next.js Starter."
+        >
+            {page}
+        </BaseLayout>
     )
 }
 
