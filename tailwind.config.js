@@ -13,30 +13,34 @@ const breakpoints = {
 const fluidValue = (min, max) => polished.between(min, max, '20rem', '90rem')
 
 module.exports = {
+    mode: 'jit',
     purge: {
         content: [
-            './pages/**/*.{js,jsx,ts,tsx}',
-            './components/**/*.{js,jsx,ts,tsx}',
-            './lib/**/*.{js,jsx,ts,tsx}',
-            './tailwind.variants.js',
+            './src/components/**/*.{js,jsx,ts,tsx}',
+            './src/layouts/**/*.{js,jsx,ts,tsx}',
+            './src/lib/**/*.{js,jsx,ts,tsx}',
+            './src/pages/**/*.{js,jsx,ts,tsx}',
+            './src/utils/**/*.{js,jsx,ts,tsx}',
+            './src/tailwind.variants.js',
+            './tw-safelist.txt',
         ],
-        options: {
-            // Patterns for dynamically driven classes
-            whitelistPatterns: [
-                /aspect-(w|h)-(\d{1,16})/, // aspect ratio
-            ],
-        },
+        // options: {
+        //     safelist: [/^aspect-/],
+        // },
     },
     darkMode: false, // Options: false/media/class
     theme: {
         extend: {
             spacing: {
                 em: '1em',
-                128: '32rem',
-                160: '40rem',
-                192: '48rem',
-                224: '56rem',
-                256: '64rem',
+                128: '32rem', // 512px
+                144: '36rem', // 576px
+                160: '40rem', // 640px
+                192: '48rem', // 768px
+                224: '56rem', // 896px
+                256: '64rem', // 1024px
+                320: '80rem', // 1280px
+                360: '90rem', // 1440px
                 vw: '100vw',
                 vh: '100vh',
                 full: '100%',
@@ -44,6 +48,11 @@ module.exports = {
             minHeight: theme => ({
                 ...theme('spacing'),
             }),
+            zIndex: {
+                top: '9999',
+                bottom: '-9999',
+                '-1': '-1',
+            },
         },
         screens: breakpoints,
         colors: {
@@ -113,8 +122,6 @@ module.exports = {
     },
     variants: {},
     plugins: [
-        // https://github.com/tailwindlabs/tailwindcss-typography
-        require('@tailwindcss/typography'),
         // https://github.com/tailwindlabs/tailwindcss-forms
         require('@tailwindcss/forms'),
         // https://github.com/tailwindlabs/tailwindcss-aspect-ratio

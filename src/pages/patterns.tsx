@@ -185,7 +185,7 @@ const Patterns: NextPage = () => {
                         Image will stretch both width and height to the
                         dimensions of the parent element.
                     </Text>
-                    <Box className="relative w-full" style={{ height: 150 }}>
+                    <Box className="relative w-full h-[105px]">
                         <Image
                             src="https://source.unsplash.com/OmEV7k3OniM/1000x600"
                             layout="fill"
