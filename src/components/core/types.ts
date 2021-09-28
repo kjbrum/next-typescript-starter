@@ -1,21 +1,39 @@
-import { ReactNode } from 'react'
+import type { ElementType, ReactNode } from 'react'
 
 /**
  * Base
  */
 export type BoxProps = {
-    as?: string | ReactNode,
-    __variantKey?: string,
+    as?: ElementType<any>,
+    __variantKey?:
+        | 'flex'
+        | 'grid'
+        | 'text'
+        | 'heading'
+        | 'link'
+        | 'button'
+        | 'image'
+        | 'form'
+        | 'form.label'
+        | 'form.input'
+        | 'form.textarea'
+        | 'form.select'
+        | 'form.radio'
+        | 'form.checkbox'
+        | 'form.switch',
     variant?: string,
     className?: string,
     children: ReactNode,
+    [x: string]: any,
 }
 
 export type FlexProps = BoxProps
 
 export type GridProps = BoxProps
 
-export type TextProps = BoxProps
+export type TextProps = BoxProps & {
+    variant?: 'intro',
+}
 
 export type HeadingProps = BoxProps & {
     variant?: 'display1' | 'display2' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6',
@@ -28,6 +46,7 @@ export type LinkProps = BoxProps & {
     replace?: boolean,
     scroll?: boolean,
     shallow?: boolean,
+    variant?: 'compact',
 }
 
 export type ButtonProps = BoxProps & {

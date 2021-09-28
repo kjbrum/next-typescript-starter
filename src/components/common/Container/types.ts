@@ -1,3 +1,3 @@
-import { BoxProps } from '@/components/core'
+import type { BoxProps } from '@/components/core'
 
 export type ContainerProps = BoxProps

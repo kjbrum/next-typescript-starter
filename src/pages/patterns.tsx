@@ -1,8 +1,8 @@
 import { useState } from 'react'
-import type { ReactElement } from 'react'
+import type { ReactNode, ReactElement } from 'react'
 import cx from 'classnames'
 import type { NextPageWithLayout } from '@/pages/_app'
-import BaseLayout from '@/layouts/BaseLayout'
+import { BaseLayout } from '@/layouts/BaseLayout'
 import {
     // Base
     Box,
@@ -28,13 +28,20 @@ import {
 } from '@/components/core'
 import { Container } from '@/components/common'
 
-const SectionHeading = ({ title, ...props }) => (
+type SectionHeadingProps = {
+    title?: string,
+}
+const SectionHeading = ({ title = '', ...props }: SectionHeadingProps) => (
     <Heading variant="h3" className="mt-12 mb-2" {...props}>
         <kbd>&lt;{title} /&gt;</kbd>
     </Heading>
 )
 
-const Card = ({ className, children, ...props }) => (
+type CardProps = {
+    className?: string,
+    children?: ReactNode,
+}
+const Card = ({ className = '', children, ...props }: CardProps) => (
     <Box {...props} className={cx('p-8', className)}>
         {children}
     </Box>
@@ -217,7 +224,7 @@ const Patterns: NextPageWithLayout = () => {
             </Box>
 
             <SectionHeading title="SVG" />
-            <SVG width="48" height="32" viewBox="0 0 12 8">
+            <SVG width={48} height={32} viewBox="0 0 12 8">
                 <path d="M5.293 6.95L6 7.657 11.657 2 10.243.586 6 4.828 1.757.586.343 2z" />
             </SVG>
 

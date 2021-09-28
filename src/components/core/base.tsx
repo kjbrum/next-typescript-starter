@@ -3,7 +3,7 @@ import { default as NextLink } from 'next/link'
 import { default as NextImage } from 'next/image'
 import cx from 'classnames'
 import { parseVideoUrl, getMargin, omitMargin } from '@/utils/helpers'
-import twVariants from '@root/tailwind.variants'
+import TailwindVariants, { TailwindVariantTypes } from '@root/tailwind.variants'
 import type {
     BoxProps,
     FlexProps,
@@ -26,7 +26,7 @@ export const Box = forwardRef(
     (
         {
             as: Tag = 'div',
-            __variantKey = '',
+            __variantKey,
             variant = '',
             className,
             ...props
@@ -38,8 +38,8 @@ export const Box = forwardRef(
             className={cx([
                 __variantKey &&
                     variant && [
-                        twVariants?.[__variantKey]?.['DEFAULT'],
-                        twVariants?.[__variantKey]?.[variant],
+                        TailwindVariants?.[__variantKey]?.['DEFAULT'],
+                        TailwindVariants?.[__variantKey]?.[variant],
                     ],
                 className,
             ])}
@@ -54,7 +54,12 @@ Box.displayName = 'Box'
  * Flex
  */
 export const Flex = forwardRef(({ className, ...props }: FlexProps, ref) => (
-    <Box ref={ref} className={cx('flex', className)} {...props} />
+    <Box
+        ref={ref}
+        __variantKey="flex"
+        className={cx('flex', className)}
+        {...props}
+    />
 ))
 
 Flex.displayName = 'Flex'
@@ -65,7 +70,7 @@ Flex.displayName = 'Flex'
 export const Grid = forwardRef(({ className, ...props }: GridProps, ref) => (
     <Box
         ref={ref}
-        __variantKey="grids"
+        __variantKey="grid"
         className={cx('grid', className)}
         {...props}
     />
@@ -77,7 +82,7 @@ Grid.displayName = 'Grid'
  * Text
  */
 export const Text = forwardRef((props: TextProps, ref) => (
-    <Box ref={ref} as="p" __variantKey="texts" {...props} />
+    <Box ref={ref} as="p" __variantKey="text" {...props} />
 ))
 
 Text.displayName = 'Text'
@@ -86,7 +91,7 @@ Text.displayName = 'Text'
  * Heading
  */
 export const Heading = forwardRef((props: HeadingProps, ref) => (
-    <Box ref={ref} as="h2" __variantKey="headings" variant="h2" {...props} />
+    <Box ref={ref} as="h2" __variantKey="heading" variant="h2" {...props} />
 ))
 
 Heading.displayName = 'Heading'
@@ -105,7 +110,7 @@ export const Link = forwardRef(
             <Box
                 ref={ref}
                 as="a"
-                __variantKey="links"
+                __variantKey="link"
                 href={href}
                 rel="nofollow noopener"
                 {...props}
@@ -119,7 +124,7 @@ export const Link = forwardRef(
                 shallow={shallow}
                 passHref={true}
             >
-                <Box ref={ref} as="a" __variantKey="links" {...props} />
+                <Box ref={ref} as="a" __variantKey="link" {...props} />
             </NextLink>
         )
     }
@@ -135,7 +140,7 @@ export const Button = forwardRef(
         <Box
             ref={ref}
             as="button"
-            __variantKey="buttons"
+            __variantKey="button"
             type={as && as !== 'button' ? null : 'button'}
             {...props}
         />
@@ -151,7 +156,7 @@ export const Image = forwardRef(
         <Box
             ref={ref}
             as={NextImage}
-            __variantKey="images"
+            __variantKey="image"
             alt=""
             width={width}
             height={height || (width && width / parseInt(ratio, 10))}
@@ -172,7 +177,7 @@ export const SVG = ({ width = 16, height = 16, ...props }: SvgProps) => (
         xmlns="http://www.w3.org/2000/svg"
         width={width + 'px'}
         height={height + 'px'}
-        viewBox={`0 0 ${parseInt(width, 10)} ${parseInt(height, 10)}`}
+        viewBox={`0 0 ${width} ${height}`}
         fill="currentcolor"
         {...props}
     />
