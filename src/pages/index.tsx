@@ -1,9 +1,9 @@
 import type { ReactElement } from 'react'
-import type { NextPage } from 'next'
-import BaseLayout from '@/layouts/BaseLayout'
+import type { NextPageWithLayout } from '@/pages/_app'
+import { BaseLayout } from '@/layouts/BaseLayout'
 import { Heading } from '@/components/core'
 
-const Home: NextPage = () => {
+const Home: NextPageWithLayout = () => {
     return (
         <main className="p-8 md:p-16 text-center">
             <Heading className="pb-4">

@@ -1,12 +1,14 @@
+import { ReactNode } from 'react'
+
 /**
  * Base
  */
 export type BoxProps = {
-    as?: string | React.ReactNode,
+    as?: string | ReactNode,
     __variantKey?: string,
     variant?: string,
     className?: string,
-    children: React.ReactNode,
+    children: ReactNode,
 }
 
 export type FlexProps = BoxProps
@@ -81,19 +83,19 @@ export type TextareaProps = BoxProps
 export type SelectProps = BoxProps
 
 export type RadioProps = BoxProps & {
-    label?: string | React.ReactNode,
+    label?: string | ReactNode,
     labelClassName?: string,
 }
 
 export type CheckboxProps = BoxProps & {
-    label?: string | React.ReactNode,
+    label?: string | ReactNode,
     labelClassName?: string,
 }
 
 export type SwitchProps = BoxProps & {
     checked?: boolean,
-    onLabel?: string | React.ReactNode,
-    offLabel?: string | React.ReactNode,
+    onLabel?: string | ReactNode,
+    offLabel?: string | ReactNode,
     labelClassName?: string,
     onClick?: () => void,
 }

@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import type { ReactElement } from 'react'
-import type { NextPage } from 'next'
 import cx from 'classnames'
+import type { NextPageWithLayout } from '@/pages/_app'
 import BaseLayout from '@/layouts/BaseLayout'
 import {
     // Base
@@ -40,7 +40,7 @@ const Card = ({ className, children, ...props }) => (
     </Box>
 )
 
-const Patterns: NextPage = () => {
+const Patterns: NextPageWithLayout = () => {
     const [switchOn, setSwitchOn] = useState(false)
 
     return (
