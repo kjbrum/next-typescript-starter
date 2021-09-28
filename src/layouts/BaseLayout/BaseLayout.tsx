@@ -1,8 +1,13 @@
 import Head from 'next/head'
 import { Flex } from '@/components/core'
 import { Footer, Header, ScreenReader } from '@/components/common'
+import type { BaseLayoutProps } from '.'
 
-const BaseLayout = ({ title, description, children }) => (
+const BaseLayout = ({
+    title = '',
+    description = '',
+    children,
+}: BaseLayoutProps) => (
     <>
         <Head>
             <title>{title && `${title} | `}Simple Focus Next.js Starter</title>
@@ -35,10 +40,5 @@ const BaseLayout = ({ title, description, children }) => (
         </Flex>
     </>
 )
-
-BaseLayout.defaultProps = {
-    title: '',
-    children: null,
-}
 
 export default BaseLayout

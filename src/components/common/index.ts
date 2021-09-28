@@ -1,4 +1,4 @@
-export { default as Container } from './Container'
-export { default as Footer } from './Footer'
-export { default as Header } from './Header'
-export { default as ScreenReader } from './ScreenReader'
+export { Container } from './Container'
+export { Footer } from './Footer'
+export { Header } from './Header'
+export { ScreenReader } from './ScreenReader'

@@ -4,16 +4,33 @@ import { default as NextImage } from 'next/image'
 import cx from 'classnames'
 import { parseVideoUrl, getMargin, omitMargin } from '@/utils/helpers'
 import twVariants from '@root/tailwind.variants'
+import type {
+    BoxProps,
+    FlexProps,
+    GridProps,
+    TextProps,
+    HeadingProps,
+    LinkProps,
+    ButtonProps,
+    ImageProps,
+    SvgProps,
+    AspectRatioProps,
+    AspectImageProps,
+    EmbedProps,
+} from '.'
 
+/**
+ * Box
+ */
 export const Box = forwardRef(
     (
         {
             as: Tag = 'div',
-            __variantKey = null,
-            variant = null,
+            __variantKey = '',
+            variant = '',
             className,
             ...props
-        },
+        }: BoxProps,
         ref
     ) => (
         <Tag
@@ -30,14 +47,22 @@ export const Box = forwardRef(
         />
     )
 )
+
 Box.displayName = 'Box'
 
-export const Flex = forwardRef(({ className, ...props }, ref) => (
+/**
+ * Flex
+ */
+export const Flex = forwardRef(({ className, ...props }: FlexProps, ref) => (
     <Box ref={ref} className={cx('flex', className)} {...props} />
 ))
+
 Flex.displayName = 'Flex'
 
-export const Grid = forwardRef(({ className, ...props }, ref) => (
+/**
+ * Grid
+ */
+export const Grid = forwardRef(({ className, ...props }: GridProps, ref) => (
     <Box
         ref={ref}
         __variantKey="grids"
@@ -45,24 +70,38 @@ export const Grid = forwardRef(({ className, ...props }, ref) => (
         {...props}
     />
 ))
+
 Grid.displayName = 'Grid'
 
-export const Text = forwardRef((props, ref) => (
+/**
+ * Text
+ */
+export const Text = forwardRef((props: TextProps, ref) => (
     <Box ref={ref} as="p" __variantKey="texts" {...props} />
 ))
+
 Text.displayName = 'Text'
 
-export const Heading = forwardRef((props, ref) => (
+/**
+ * Heading
+ */
+export const Heading = forwardRef((props: HeadingProps, ref) => (
     <Box ref={ref} as="h2" __variantKey="headings" variant="h2" {...props} />
 ))
+
 Heading.displayName = 'Heading'
 
+/**
+ * Link
+ */
 export const Link = forwardRef(
-    ({ href, as, prefetch, replace, scroll, shallow, ...props }, ref) => {
-        return href &&
-            (href.startsWith('http') ||
-                href.startsWith('mailto:') ||
-                href.startsWith('tel:')) ? (
+    (
+        { href, as, prefetch, replace, scroll, shallow, ...props }: LinkProps,
+        ref
+    ) => {
+        return href.startsWith('http') ||
+            href.startsWith('mailto:') ||
+            href.startsWith('tel:') ? (
             <Box
                 ref={ref}
                 as="a"
@@ -74,7 +113,6 @@ export const Link = forwardRef(
         ) : (
             <NextLink
                 href={href.replace(/^\/?([^\/]+(?:\/[^\/]+)*)\/?$/, '/$1')}
-                as={as}
                 prefetch={prefetch}
                 replace={replace}
                 scroll={scroll}
@@ -86,36 +124,49 @@ export const Link = forwardRef(
         )
     }
 )
+
 Link.displayName = 'Link'
 
-export const Button = forwardRef((props, ref) => (
-    <Box
-        ref={ref}
-        as="button"
-        __variantKey="buttons"
-        type={props?.as && props.as !== 'button' ? null : 'button'}
-        {...props}
-    />
-))
+/**
+ * Button
+ */
+export const Button = forwardRef(
+    ({ as, type = '', ...props }: ButtonProps, ref) => (
+        <Box
+            ref={ref}
+            as="button"
+            __variantKey="buttons"
+            type={as && as !== 'button' ? null : 'button'}
+            {...props}
+        />
+    )
+)
 Button.displayName = 'Button'
 
+/**
+ * Image
+ */
 export const Image = forwardRef(
-    ({ ratio = 4 / 3, width, height, src, ...props }, ref) => (
+    ({ ratio = '4 / 3', width, height, src, ...props }: ImageProps, ref) => (
         <Box
             ref={ref}
             as={NextImage}
             __variantKey="images"
             alt=""
             width={width}
-            height={height || (width && width / ratio)}
+            height={height || (width && width / parseInt(ratio, 10))}
             src={src}
             {...props}
         />
     )
 )
+
 Image.displayName = 'Image'
 
-export const SVG = ({ width = 16, height = 16, ...props }) => (
+/**
+ * SVG
+ */
+export const SVG = ({ width = 16, height = 16, ...props }: SvgProps) => (
     <Box
         as="svg"
         xmlns="http://www.w3.org/2000/svg"
@@ -126,10 +177,14 @@ export const SVG = ({ width = 16, height = 16, ...props }) => (
         {...props}
     />
 )
+
 SVG.displayName = 'SVG'
 
+/**
+ * AspectRatio
+ */
 export const AspectRatio = forwardRef(
-    ({ ratio = '4 / 3', className, ...props }, ref) => {
+    ({ ratio = '4 / 3', className, ...props }: AspectRatioProps, ref) => {
         const [width, height] = ratio.split('/').map(x => x.trim())
         return (
             <Box
@@ -143,10 +198,14 @@ export const AspectRatio = forwardRef(
         )
     }
 )
+
 AspectRatio.displayName = 'AspectRatio'
 
+/**
+ * AspectImage
+ */
 export const AspectImage = forwardRef(
-    ({ ratio = '4 / 3', className, ...props }, ref) => (
+    ({ ratio = '4 / 3', className, ...props }: AspectImageProps, ref) => (
         <AspectRatio ratio={ratio} className={getMargin(className)}>
             <Image
                 ref={ref}
@@ -161,8 +220,12 @@ export const AspectImage = forwardRef(
         </AspectRatio>
     )
 )
+
 AspectImage.displayName = 'AspectImage'
 
+/**
+ * Embed
+ */
 export const Embed = forwardRef(
     (
         {
@@ -173,7 +236,7 @@ export const Embed = forwardRef(
             allow,
             className,
             ...props
-        },
+        }: EmbedProps,
         ref
     ) => (
         <AspectRatio ratio={ratio} className={getMargin(className)}>
@@ -190,4 +253,5 @@ export const Embed = forwardRef(
         </AspectRatio>
     )
 )
+
 Embed.displayName = 'Embed'
