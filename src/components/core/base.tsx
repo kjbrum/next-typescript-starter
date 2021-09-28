@@ -220,6 +220,7 @@ export const AspectImage = forwardRef(
                     omitMargin(className)
                 )}
                 layout="fill"
+                alt=""
                 {...props}
             />
         </AspectRatio>

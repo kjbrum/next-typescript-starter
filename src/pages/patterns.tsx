@@ -92,18 +92,18 @@ const Patterns: NextPageWithLayout = () => {
             <Text as="p" className="pb-4">
                 My awesome paragraphs. Austin mustache master cleanse roof party
                 meh irony beard bitters Shoreditch artisan flexitarian synth
-                McSweeney's fap Pinterest lo-fi mixtape twee Truffaut salvia
-                kale chips vinyl you probably haven't heard of them readymade
-                Pitchfork hoodie try-hard scenester PBR&B Brooklyn cred before
-                they sold out YOLO viral dreamcatcher Tonx normcore gluten-free
-                trust fund hella Kickstarter literally Helvetica 90's locavore
-                messenger bag selvage cray four loko yr fanny pack next level
-                authentic typewriter tote bag kitsch High Life iPhone semiotics
-                post-ironic blog seitan biodiesel Cosby sweater gastropub fixie
-                occupy shabby chic chia put a bird on it Banksy squid direct
-                trade banh mi aesthetic vegan Wes Anderson butcher flannel
-                skateboard craft beer asymmetrical tousled actually food truck
-                Bushwick photo booth 3 wolf moon Godard street.
+                McSweeney&apos;s fap Pinterest lo-fi mixtape twee Truffaut
+                salvia kale chips vinyl you probably haven&apos;t heard of them
+                readymade Pitchfork hoodie try-hard scenester PBR&B Brooklyn
+                cred before they sold out YOLO viral dreamcatcher Tonx normcore
+                gluten-free trust fund hella Kickstarter literally Helvetica
+                90&apos;s locavore messenger bag selvage cray four loko yr fanny
+                pack next level authentic typewriter tote bag kitsch High Life
+                iPhone semiotics post-ironic blog seitan biodiesel Cosby sweater
+                gastropub fixie occupy shabby chic chia put a bird on it Banksy
+                squid direct trade banh mi aesthetic vegan Wes Anderson butcher
+                flannel skateboard craft beer asymmetrical tousled actually food
+                truck Bushwick photo booth 3 wolf moon Godard street.
             </Text>
             <Text as="p">
                 Art kogi Intelligentsia Etsy distillery art party selfies plaid
@@ -144,7 +144,7 @@ const Patterns: NextPageWithLayout = () => {
             <Box className="overflow-hidden w-full">
                 <Box className="w-full md:w-1/2">
                     <Heading variant="h5" className="font-bold">
-                        layout="intrinsic"
+                        layout=&quot;intrinsic&quot;
                     </Heading>
                     <Text className="pb-2 text-sm text-gray-600 leading-tight">
                         Image will scale the dimensions down for smaller
@@ -155,10 +155,11 @@ const Patterns: NextPageWithLayout = () => {
                         src="https://source.unsplash.com/OmEV7k3OniM/1000x600"
                         width={500}
                         height={300}
+                        alt=""
                     />
 
                     <Heading variant="h5" className="pt-6 font-bold">
-                        layout="fixed"
+                        layout=&quot;fixed&quot;
                     </Heading>
                     <Text className="pb-2 text-sm text-gray-600 leading-tight">
                         Image will set both width and height, and dimensions
@@ -169,10 +170,11 @@ const Patterns: NextPageWithLayout = () => {
                         width={1000}
                         height={300}
                         layout="fixed"
+                        alt=""
                     />
 
                     <Heading variant="h5" className="pt-6 font-bold">
-                        layout="responsive"
+                        layout=&quot;responsive&quot;
                     </Heading>
                     <Text className="pb-2 text-sm text-gray-600 leading-tight">
                         Image will scale the dimensions down for smaller
@@ -183,10 +185,11 @@ const Patterns: NextPageWithLayout = () => {
                         width={500}
                         height={300}
                         layout="responsive"
+                        alt=""
                     />
 
                     <Heading variant="h5" className="pt-6 font-bold">
-                        layout="fill"
+                        layout=&quot;fill&quot;
                     </Heading>
                     <Text className="pb-2 text-sm text-gray-600 leading-tight">
                         Image will stretch both width and height to the
@@ -196,6 +199,7 @@ const Patterns: NextPageWithLayout = () => {
                         <Image
                             src="https://source.unsplash.com/OmEV7k3OniM/1000x600"
                             layout="fill"
+                            alt=""
                         />
                     </Box>
                 </Box>
@@ -209,6 +213,7 @@ const Patterns: NextPageWithLayout = () => {
                     src="https://source.unsplash.com/collection/608458/2400x800?2"
                     width={2400}
                     ratio={3 / 1}
+                    alt=""
                 />
             </Box>
 
