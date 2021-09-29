@@ -3,7 +3,7 @@ import { default as NextLink } from 'next/link'
 import { default as NextImage } from 'next/image'
 import cx from 'classnames'
 import { parseVideoUrl, getMargin, omitMargin } from '@/utils/helpers'
-import TailwindVariants, { TailwindVariantTypes } from '@root/tailwind.variants'
+import TailwindVariants from '@root/tailwind.variants'
 import type {
     BoxProps,
     FlexProps,

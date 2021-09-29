@@ -13,14 +13,13 @@ export type BoxProps = {
         | 'link'
         | 'button'
         | 'image'
-        | 'form'
-        | 'form.label'
-        | 'form.input'
-        | 'form.textarea'
-        | 'form.select'
-        | 'form.radio'
-        | 'form.checkbox'
-        | 'form.switch',
+        | 'label'
+        | 'input'
+        | 'textarea'
+        | 'select'
+        | 'radio'
+        | 'checkbox'
+        | 'switch',
     variant?: string,
     className?: string,
     children: ReactNode,

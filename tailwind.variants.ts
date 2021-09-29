@@ -7,15 +7,22 @@ export type TailwindVariantTypes = {
     link: Record<string, string>,
     button: Record<string, string>,
     image: Record<string, string>,
-    form: {
-        label: Record<string, string>,
-        input: Record<string, string>,
-        textarea: Record<string, string>,
-        select: Record<string, string>,
-        radio: Record<string, string>,
-        checkbox: Record<string, string>,
-        switch: Record<string, string>,
-    },
+    // form: {
+    //     label: Record<string, string>,
+    //     input: Record<string, string>,
+    //     textarea: Record<string, string>,
+    //     select: Record<string, string>,
+    //     radio: Record<string, string>,
+    //     checkbox: Record<string, string>,
+    //     switch: Record<string, string>,
+    // },
+    label: Record<string, string>,
+    input: Record<string, string>,
+    textarea: Record<string, string>,
+    select: Record<string, string>,
+    radio: Record<string, string>,
+    checkbox: Record<string, string>,
+    switch: Record<string, string>,
 }
 
 const TailwindVariants: TailwindVariantTypes = {
@@ -45,15 +52,13 @@ const TailwindVariants: TailwindVariantTypes = {
             'text-gray-700 bg-transparent rounded ring-2 ring-inset ring-gray-700 hover:bg-gray-100 hover:border-gray-100 hover:ring-gray-800 focus:bg-gray-100 focus:border-gray-100 focus:ring-gray-800',
     },
     image: {},
-    form: {
-        label: {},
-        input: {},
-        textarea: {},
-        select: {},
-        radio: {},
-        checkbox: {},
-        switch: {},
-    },
+    label: {},
+    input: {},
+    textarea: {},
+    select: {},
+    radio: {},
+    checkbox: {},
+    switch: {},
 }
 
 export default TailwindVariants
