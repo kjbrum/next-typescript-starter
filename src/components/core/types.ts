@@ -62,7 +62,7 @@ export type ImageProps = BoxProps & {
     height?: number,
     layout?: 'intrinsic' | 'fixed' | 'responsive' | 'fill',
     src: string,
-    alt?: '',
+    alt?: string,
 }
 
 export type SvgProps = BoxProps & {
