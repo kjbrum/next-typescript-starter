@@ -25,7 +25,7 @@ import type {
 export const Box = forwardRef(
     (
         {
-            as: Tag = 'div',
+            as: Component = 'div',
             __variantKey,
             variant = '',
             className,
@@ -33,7 +33,7 @@ export const Box = forwardRef(
         }: BoxProps,
         ref
     ) => (
-        <Tag
+        <Component
             ref={ref}
             className={cx([
                 __variantKey &&
