@@ -1,7 +1,26 @@
 /**
+ * Retrieve a key value from an object
+ * @param {object} obj Object to get value from
+ * @param {string} key Key to get value for
+ * @returns {string}
+ */
+export const get = (obj: Record<string, any>, key: string): string | null => {
+    var keys = key.split('.')
+
+    for (var i = 0; i < keys.length; i++) {
+        if (!obj.hasOwnProperty(keys[i])) {
+            return null
+        }
+        return obj[keys[i]]
+    }
+
+    return null
+}
+
+/**
  * Remove/get margin values from className
  * @param {function} test Testing regex
- * @param {string} className CString of classes to be parsed
+ * @param {string} className String of classes to be parsed
  * @returns {string}
  */
 export const getClasses =
