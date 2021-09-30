@@ -49,7 +49,7 @@ export type LinkProps = BoxProps & {
 }
 
 export type ButtonProps = BoxProps & {
-    as?: '' | 'button',
+    as?: 'button',
     type?: string,
     variant?: 'filled' | 'outline',
 }
@@ -115,5 +115,4 @@ export type SwitchProps = BoxProps & {
     onLabel?: string | ReactNode,
     offLabel?: string | ReactNode,
     labelClassName?: string,
-    onClick?: () => void,
 }

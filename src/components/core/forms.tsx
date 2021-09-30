@@ -24,16 +24,18 @@ Label.displayName = 'Label'
 /**
  * Input
  */
-export const Input = forwardRef(({ className, ...props }: InputProps, ref) => (
-    <Box
-        ref={ref}
-        as="input"
-        type="text"
-        __variantKey="input"
-        className={cx('rounded focus:border-gray-500', className)}
-        {...props}
-    />
-))
+export const Input = forwardRef(
+    ({ className = '', ...props }: InputProps, ref) => (
+        <Box
+            ref={ref}
+            as="input"
+            type="text"
+            __variantKey="input"
+            className={cx('rounded focus:border-gray-500', className)}
+            {...props}
+        />
+    )
+)
 
 Input.displayName = 'Input'
 
@@ -41,7 +43,7 @@ Input.displayName = 'Input'
  * Textarea
  */
 export const Textarea = forwardRef(
-    ({ className, ...props }: TextareaProps, ref) => (
+    ({ className = '', ...props }: TextareaProps, ref) => (
         <Box
             ref={ref}
             as="textarea"
@@ -58,7 +60,7 @@ Textarea.displayName = 'Textarea'
  * Select
  */
 export const Select = forwardRef(
-    ({ className, ...props }: SelectProps, ref) => (
+    ({ className = '', ...props }: SelectProps, ref) => (
         <Box
             ref={ref}
             as="select"
@@ -75,7 +77,10 @@ Select.displayName = 'Select'
  * Radio
  */
 export const Radio = forwardRef(
-    ({ label, labelClassName, className, ...props }: RadioProps, ref) => (
+    (
+        { label, labelClassName = '', className = '', ...props }: RadioProps,
+        ref
+    ) => (
         <>
             {label ? (
                 <Label
@@ -119,7 +124,10 @@ Radio.displayName = 'Radio'
  * Checkbox
  */
 export const Checkbox = forwardRef(
-    ({ label, labelClassName, className, ...props }: CheckboxProps, ref) => (
+    (
+        { label, labelClassName = '', className = '', ...props }: CheckboxProps,
+        ref
+    ) => (
         <>
             {label ? (
                 <Label
@@ -165,12 +173,11 @@ Checkbox.displayName = 'Checkbox'
 export const Switch = forwardRef(
     (
         {
-            checked,
+            checked = false,
             onLabel,
             offLabel,
-            labelClassName,
-            className,
-            onClick,
+            labelClassName = '',
+            className = '',
             ...props
         }: SwitchProps,
         ref
@@ -191,7 +198,6 @@ export const Switch = forwardRef(
                         as="button"
                         type="button"
                         __variantKey="switch"
-                        onClick={onClick}
                         role="checkbox"
                         aria-checked={checked}
                         aria-label="Toggle switch"
@@ -224,7 +230,6 @@ export const Switch = forwardRef(
                     as="button"
                     type="button"
                     __variantKey="switch"
-                    onClick={onClick}
                     role="checkbox"
                     aria-checked={checked}
                     aria-label="Toggle switch"

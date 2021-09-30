@@ -2,6 +2,7 @@ import type { ReactElement } from 'react'
 import type { NextPageWithLayout } from '@/pages/_app'
 import { BaseLayout } from '@/layouts/BaseLayout'
 import { Heading } from '@/components/core'
+import { toKebabCase } from '@/utils/helpers'
 
 const Home: NextPageWithLayout = () => {
     return (
