@@ -1,5 +1,5 @@
 // Retrieve a key value from an object
-export function get(object, key) {
+export function get(object: {}, key: any) {
     var keys = key.split('.')
 
     for (var i = 0; i < keys.length; i++) {
@@ -14,7 +14,7 @@ export function get(object, key) {
 
 // Remove/get margin values from className
 const MRE = /m[trblxy]?-/
-export const getClasses = test => className => {
+export const getClasses = (test: RegExpConstructor) => (className: string) => {
     return className
         ? className
               .split(' ')
@@ -27,7 +27,7 @@ export const getMargin = getClasses(k => MRE.test(k))
 export const omitMargin = getClasses(k => !MRE.test(k))
 
 // Convert a string to kebabcase
-export const toKebabCase = (str = '') => {
+export const toKebabCase = (str: string = '') => {
     if (!str) return ''
 
     return (
@@ -47,7 +47,11 @@ export const toKebabCase = (str = '') => {
 }
 
 // Truncate a string, without cutting off words
-export const truncate = (str, max = 100, more = '...') => {
+export const truncate = (
+    str: string,
+    max: number = 100,
+    more: string = '...'
+) => {
     if (str.length <= max) return str
 
     let trimmedString = str.substr(0, max)
@@ -67,9 +71,9 @@ export const truncate = (str, max = 100, more = '...') => {
  * @param {integer} delay Number of milliseconds to throttle running the function
  * @returns {void}
  */
-export const throttle = (func, delay) => {
+export const throttle = (func: () => void, delay: number) => {
     let inProgress = false
-    return (...args) => {
+    return (...args: []) => {
         if (inProgress) return
         inProgress = true
 
@@ -86,7 +90,7 @@ export const throttle = (func, delay) => {
  * @param {string} key Key to use for grouping
  * @returns {object}
  */
-export const groupByKey = (items, key) => {
+export const groupByKey = (items: [], key: string) => {
     return items.reduce(
         (result, item) => ({
             ...result,
@@ -101,18 +105,20 @@ export const groupByKey = (items, key) => {
  * @param {object} items Object to be sorted
  * @returns {object}
  */
-export const sortByKeys = items => {
+export const sortByKeys = (items: []) => {
     return Object.keys(items)
         .sort()
-        .reduce((obj, key) => {
+        .reduce((obj: Record<string, any>, key: string) => {
             obj[key] = items[key]
             return obj
         }, {})
 }
 
-// Parse YouTube or Vimeo URLs
+/**
+ * Parse YouTube or Vimeo URLs
+ */
 export const parseVideoUrl = {
-    parse: function (url) {
+    parse: function (url: string) {
         // - Supported YouTube URL formats:
         //   - http://www.youtube.com/watch?v=My2FRPA3Gf8
         //   - http://youtu.be/My2FRPA3Gf8
@@ -126,6 +132,9 @@ export const parseVideoUrl = {
         const parts = url.match(
             /(http:|https:|)\/\/(player.|www.)?(vimeo\.com|youtu(be\.com|\.be|be\.googleapis\.com))\/(video\/|embed\/|watch\?v=|v\/)?([A-Za-z0-9._%-]*)(\&\S+)?/
         )
+        // const parts = url.match(
+        //     /(http:|https:|)\/\/(player.|www.)?(vimeo\.com|youtu(be\.com|\.be|be\.googleapis\.com))\/(video\/|embed\/|watch\?v=|v\/)?([A-Za-z0-9._%-]*)(\&\S+)?/
+        // ) as RegExpMatchArray
 
         let type = 'other'
         let allow = null
@@ -149,7 +158,7 @@ export const parseVideoUrl = {
     },
 
     // Returns an embed URL
-    createEmbed: function (url) {
+    createEmbed: function (url: string) {
         const parsedUrl = this.parse(url)
 
         if (parsedUrl.type == 'youtube') {
@@ -162,7 +171,7 @@ export const parseVideoUrl = {
     },
 
     // Returns a thumbnail image
-    getThumbnail: function (url) {
+    getThumbnail: function (url: string) {
         const parsedUrl = this.parse(url)
         let thumbUrl
 
