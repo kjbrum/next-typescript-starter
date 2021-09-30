@@ -14,6 +14,22 @@ export {
     Embed,
 } from './base'
 
+// Base types
+export type {
+    BoxProps,
+    FlexProps,
+    GridProps,
+    TextProps,
+    HeadingProps,
+    LinkProps,
+    ButtonProps,
+    ImageProps,
+    SvgProps,
+    AspectRatioProps,
+    AspectImageProps,
+    EmbedProps,
+} from './types'
+
 // Forms
 export {
     Label,
@@ -24,3 +40,14 @@ export {
     Checkbox,
     Switch,
 } from './forms'
+
+// Form types
+export type {
+    LabelProps,
+    InputProps,
+    TextareaProps,
+    SelectProps,
+    RadioProps,
+    CheckboxProps,
+    SwitchProps,
+} from './types'

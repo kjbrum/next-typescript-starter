@@ -1,8 +1,8 @@
 import { useState } from 'react'
-import type { ReactElement } from 'react'
-import type { NextPage } from 'next'
+import type { ReactNode, ReactElement } from 'react'
 import cx from 'classnames'
-import BaseLayout from '@/layouts/BaseLayout'
+import type { NextPageWithLayout } from '@/pages/_app'
+import { BaseLayout } from '@/layouts/BaseLayout'
 import {
     // Base
     Box,
@@ -28,19 +28,26 @@ import {
 } from '@/components/core'
 import { Container } from '@/components/common'
 
-const SectionHeading = ({ title, ...props }) => (
+type SectionHeadingProps = {
+    title?: string,
+}
+const SectionHeading = ({ title = '', ...props }: SectionHeadingProps) => (
     <Heading variant="h3" className="mt-12 mb-2" {...props}>
         <kbd>&lt;{title} /&gt;</kbd>
     </Heading>
 )
 
-const Card = ({ className, children, ...props }) => (
+type CardProps = {
+    className?: string,
+    children?: ReactNode,
+}
+const Card = ({ className = '', children, ...props }: CardProps) => (
     <Box {...props} className={cx('p-8', className)}>
         {children}
     </Box>
 )
 
-const Patterns: NextPage = () => {
+const Patterns: NextPageWithLayout = () => {
     const [switchOn, setSwitchOn] = useState(false)
 
     return (
@@ -85,18 +92,18 @@ const Patterns: NextPage = () => {
             <Text as="p" className="pb-4">
                 My awesome paragraphs. Austin mustache master cleanse roof party
                 meh irony beard bitters Shoreditch artisan flexitarian synth
-                McSweeney's fap Pinterest lo-fi mixtape twee Truffaut salvia
-                kale chips vinyl you probably haven't heard of them readymade
-                Pitchfork hoodie try-hard scenester PBR&B Brooklyn cred before
-                they sold out YOLO viral dreamcatcher Tonx normcore gluten-free
-                trust fund hella Kickstarter literally Helvetica 90's locavore
-                messenger bag selvage cray four loko yr fanny pack next level
-                authentic typewriter tote bag kitsch High Life iPhone semiotics
-                post-ironic blog seitan biodiesel Cosby sweater gastropub fixie
-                occupy shabby chic chia put a bird on it Banksy squid direct
-                trade banh mi aesthetic vegan Wes Anderson butcher flannel
-                skateboard craft beer asymmetrical tousled actually food truck
-                Bushwick photo booth 3 wolf moon Godard street.
+                McSweeney&apos;s fap Pinterest lo-fi mixtape twee Truffaut
+                salvia kale chips vinyl you probably haven&apos;t heard of them
+                readymade Pitchfork hoodie try-hard scenester PBR&B Brooklyn
+                cred before they sold out YOLO viral dreamcatcher Tonx normcore
+                gluten-free trust fund hella Kickstarter literally Helvetica
+                90&apos;s locavore messenger bag selvage cray four loko yr fanny
+                pack next level authentic typewriter tote bag kitsch High Life
+                iPhone semiotics post-ironic blog seitan biodiesel Cosby sweater
+                gastropub fixie occupy shabby chic chia put a bird on it Banksy
+                squid direct trade banh mi aesthetic vegan Wes Anderson butcher
+                flannel skateboard craft beer asymmetrical tousled actually food
+                truck Bushwick photo booth 3 wolf moon Godard street.
             </Text>
             <Text as="p">
                 Art kogi Intelligentsia Etsy distillery art party selfies plaid
@@ -137,7 +144,7 @@ const Patterns: NextPage = () => {
             <Box className="overflow-hidden w-full">
                 <Box className="w-full md:w-1/2">
                     <Heading variant="h5" className="font-bold">
-                        layout="intrinsic"
+                        layout=&quot;intrinsic&quot;
                     </Heading>
                     <Text className="pb-2 text-sm text-gray-600 leading-tight">
                         Image will scale the dimensions down for smaller
@@ -148,10 +155,11 @@ const Patterns: NextPage = () => {
                         src="https://source.unsplash.com/OmEV7k3OniM/1000x600"
                         width={500}
                         height={300}
+                        alt=""
                     />
 
                     <Heading variant="h5" className="pt-6 font-bold">
-                        layout="fixed"
+                        layout=&quot;fixed&quot;
                     </Heading>
                     <Text className="pb-2 text-sm text-gray-600 leading-tight">
                         Image will set both width and height, and dimensions
@@ -162,10 +170,11 @@ const Patterns: NextPage = () => {
                         width={1000}
                         height={300}
                         layout="fixed"
+                        alt=""
                     />
 
                     <Heading variant="h5" className="pt-6 font-bold">
-                        layout="responsive"
+                        layout=&quot;responsive&quot;
                     </Heading>
                     <Text className="pb-2 text-sm text-gray-600 leading-tight">
                         Image will scale the dimensions down for smaller
@@ -176,10 +185,11 @@ const Patterns: NextPage = () => {
                         width={500}
                         height={300}
                         layout="responsive"
+                        alt=""
                     />
 
                     <Heading variant="h5" className="pt-6 font-bold">
-                        layout="fill"
+                        layout=&quot;fill&quot;
                     </Heading>
                     <Text className="pb-2 text-sm text-gray-600 leading-tight">
                         Image will stretch both width and height to the
@@ -189,6 +199,7 @@ const Patterns: NextPage = () => {
                         <Image
                             src="https://source.unsplash.com/OmEV7k3OniM/1000x600"
                             layout="fill"
+                            alt=""
                         />
                     </Box>
                 </Box>
@@ -202,6 +213,7 @@ const Patterns: NextPage = () => {
                     src="https://source.unsplash.com/collection/608458/2400x800?2"
                     width={2400}
                     ratio={3 / 1}
+                    alt=""
                 />
             </Box>
 
@@ -217,7 +229,7 @@ const Patterns: NextPage = () => {
             </Box>
 
             <SectionHeading title="SVG" />
-            <SVG width="48" height="32" viewBox="0 0 12 8">
+            <SVG width={48} height={32} viewBox="0 0 12 8">
                 <path d="M5.293 6.95L6 7.657 11.657 2 10.243.586 6 4.828 1.757.586.343 2z" />
             </SVG>
 

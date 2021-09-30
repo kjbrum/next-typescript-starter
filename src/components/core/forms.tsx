@@ -2,53 +2,80 @@ import { forwardRef } from 'react'
 import cx from 'classnames'
 import { Box } from '@/components/core'
 import { getMargin, omitMargin } from '@/utils/helpers'
+import type {
+    LabelProps,
+    InputProps,
+    TextareaProps,
+    SelectProps,
+    RadioProps,
+    CheckboxProps,
+    SwitchProps,
+} from '.'
 
-export const Label = forwardRef((props, ref) => (
-    <Box
-        ref={ref}
-        as="label"
-        // __variantKey="forms.label"
-        {...props}
-    />
+/**
+ * Label
+ */
+export const Label = forwardRef((props: LabelProps, ref) => (
+    <Box ref={ref} as="label" __variantKey="label" {...props} />
 ))
+
 Label.displayName = 'Label'
 
-export const Input = forwardRef(({ className, ...props }, ref) => (
+/**
+ * Input
+ */
+export const Input = forwardRef(({ className, ...props }: InputProps, ref) => (
     <Box
         ref={ref}
         as="input"
         type="text"
-        // __variantKey="forms.input"
+        __variantKey="input"
         className={cx('rounded focus:border-gray-500', className)}
         {...props}
     />
 ))
+
 Input.displayName = 'Input'
 
-export const Textarea = forwardRef(({ className, ...props }, ref) => (
-    <Box
-        ref={ref}
-        as="textarea"
-        // __variantKey="forms.textarea"
-        className={cx('rounded focus:border-gray-500', className)}
-        {...props}
-    />
-))
+/**
+ * Textarea
+ */
+export const Textarea = forwardRef(
+    ({ className, ...props }: TextareaProps, ref) => (
+        <Box
+            ref={ref}
+            as="textarea"
+            __variantKey="textarea"
+            className={cx('rounded focus:border-gray-500', className)}
+            {...props}
+        />
+    )
+)
+
 Textarea.displayName = 'Textarea'
 
-export const Select = forwardRef(({ className, ...props }, ref) => (
-    <Box
-        ref={ref}
-        as="select"
-        // __variantKey="forms.select"
-        className={cx('rounded focus:border-gray-500', className)}
-        {...props}
-    />
-))
+/**
+ * Select
+ */
+export const Select = forwardRef(
+    ({ className, ...props }: SelectProps, ref) => (
+        <Box
+            ref={ref}
+            as="select"
+            __variantKey="select"
+            className={cx('rounded focus:border-gray-500', className)}
+            {...props}
+        />
+    )
+)
+
 Select.displayName = 'Select'
 
+/**
+ * Radio
+ */
 export const Radio = forwardRef(
-    ({ label, labelClassName, className, ...props }, ref) => (
+    ({ label, labelClassName, className, ...props }: RadioProps, ref) => (
         <>
             {label ? (
                 <Label
@@ -58,7 +85,7 @@ export const Radio = forwardRef(
                         ref={ref}
                         as="input"
                         type="radio"
-                        // __variantKey="forms.radio"
+                        __variantKey="radio"
                         className={cx(
                             'text-gray-700 focus:ring-offset-0',
                             className
@@ -74,7 +101,7 @@ export const Radio = forwardRef(
                     ref={ref}
                     as="input"
                     type="radio"
-                    // __variantKey="forms.radio"
+                    __variantKey="radio"
                     className={cx(
                         'text-gray-700 focus:ring-offset-0',
                         className
@@ -85,10 +112,14 @@ export const Radio = forwardRef(
         </>
     )
 )
+
 Radio.displayName = 'Radio'
 
+/**
+ * Checkbox
+ */
 export const Checkbox = forwardRef(
-    ({ label, labelClassName, className, ...props }, ref) => (
+    ({ label, labelClassName, className, ...props }: CheckboxProps, ref) => (
         <>
             {label ? (
                 <Label
@@ -98,7 +129,7 @@ export const Checkbox = forwardRef(
                         ref={ref}
                         as="input"
                         type="checkbox"
-                        // __variantKey="forms.checkbox"
+                        __variantKey="checkbox"
                         className={cx(
                             'text-gray-700 rounded focus:ring-offset-0',
                             className
@@ -114,7 +145,7 @@ export const Checkbox = forwardRef(
                     ref={ref}
                     as="input"
                     type="checkbox"
-                    // __variantKey="forms.checkbox"
+                    __variantKey="checkbox"
                     className={cx(
                         'text-gray-700 focus:ring-offset-0',
                         className
@@ -125,8 +156,12 @@ export const Checkbox = forwardRef(
         </>
     )
 )
+
 Checkbox.displayName = 'Checkbox'
 
+/**
+ * Switch
+ */
 export const Switch = forwardRef(
     (
         {
@@ -137,7 +172,7 @@ export const Switch = forwardRef(
             className,
             onClick,
             ...props
-        },
+        }: SwitchProps,
         ref
     ) => (
         <>
@@ -155,8 +190,7 @@ export const Switch = forwardRef(
                         ref={ref}
                         as="button"
                         type="button"
-                        role="switch"
-                        // __variantKey="forms.switch"
+                        __variantKey="switch"
                         onClick={onClick}
                         role="checkbox"
                         aria-checked={checked}
@@ -189,8 +223,7 @@ export const Switch = forwardRef(
                     ref={ref}
                     as="button"
                     type="button"
-                    role="switch"
-                    // __variantKey="forms.switch"
+                    __variantKey="switch"
                     onClick={onClick}
                     role="checkbox"
                     aria-checked={checked}
@@ -215,4 +248,5 @@ export const Switch = forwardRef(
         </>
     )
 )
+
 Switch.displayName = 'Switch'
