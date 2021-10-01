@@ -2,7 +2,12 @@ import { forwardRef } from 'react'
 import { default as NextLink } from 'next/link'
 import { default as NextImage } from 'next/image'
 import cx from 'classnames'
-import { parseVideoUrl, getMargin, omitMargin } from '@/utils/helpers'
+import {
+    parseVideoUrl,
+    getVideoEmbed,
+    getMargin,
+    omitMargin,
+} from '@/utils/helpers'
 import TailwindVariants from '@root/tailwind.variants'
 import type {
     BoxProps,
@@ -28,7 +33,7 @@ export const Box = forwardRef(
             as: Component = 'div',
             __variantKey,
             variant = '',
-            className,
+            className = '',
             ...props
         }: BoxProps,
         ref
@@ -53,28 +58,32 @@ Box.displayName = 'Box'
 /**
  * Flex
  */
-export const Flex = forwardRef(({ className, ...props }: FlexProps, ref) => (
-    <Box
-        ref={ref}
-        __variantKey="flex"
-        className={cx('flex', className)}
-        {...props}
-    />
-))
+export const Flex = forwardRef(
+    ({ className = '', ...props }: FlexProps, ref) => (
+        <Box
+            ref={ref}
+            __variantKey="flex"
+            className={cx('flex', className)}
+            {...props}
+        />
+    )
+)
 
 Flex.displayName = 'Flex'
 
 /**
  * Grid
  */
-export const Grid = forwardRef(({ className, ...props }: GridProps, ref) => (
-    <Box
-        ref={ref}
-        __variantKey="grid"
-        className={cx('grid', className)}
-        {...props}
-    />
-))
+export const Grid = forwardRef(
+    ({ className = '', ...props }: GridProps, ref) => (
+        <Box
+            ref={ref}
+            __variantKey="grid"
+            className={cx('grid', className)}
+            {...props}
+        />
+    )
+)
 
 Grid.displayName = 'Grid'
 
@@ -189,8 +198,8 @@ SVG.displayName = 'SVG'
  * AspectRatio
  */
 export const AspectRatio = forwardRef(
-    ({ ratio = '4 / 3', className, ...props }: AspectRatioProps, ref) => {
-        const [width, height] = ratio.split('/').map(x => x.trim())
+    ({ ratio = '4 / 3', className = '', ...props }: AspectRatioProps, ref) => {
+        const [width, height] = ratio.split('/').map((x: string) => x.trim())
         return (
             <Box
                 ref={ref}
@@ -210,7 +219,7 @@ AspectRatio.displayName = 'AspectRatio'
  * AspectImage
  */
 export const AspectImage = forwardRef(
-    ({ ratio = '4 / 3', className, ...props }: AspectImageProps, ref) => (
+    ({ ratio = '4 / 3', className = '', ...props }: AspectImageProps, ref) => (
         <AspectRatio ratio={ratio} className={getMargin(className)}>
             <Image
                 ref={ref}
@@ -240,7 +249,7 @@ export const Embed = forwardRef(
             frameBorder = 0,
             allowFullScreen = true,
             allow,
-            className,
+            className = '',
             ...props
         }: EmbedProps,
         ref
@@ -249,10 +258,10 @@ export const Embed = forwardRef(
             <Box
                 ref={ref}
                 as="iframe"
-                src={parseVideoUrl.createEmbed(src)}
+                src={getVideoEmbed(src)}
                 frameBorder={frameBorder}
                 allowFullScreen={allowFullScreen}
-                allow={allow || parseVideoUrl.parse(src).allow}
+                allow={allow || parseVideoUrl(src)?.allow}
                 className={omitMargin(className)}
                 {...props}
             />
