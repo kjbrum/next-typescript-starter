@@ -21,7 +21,7 @@ module.exports = {
             './src/lib/**/*.{js,jsx,ts,tsx}',
             './src/pages/**/*.{js,jsx,ts,tsx}',
             './src/utils/**/*.{js,jsx,ts,tsx}',
-            './src/tailwind.variants.js',
+            './tailwind.variants.ts',
             './tw-safelist.txt',
         ],
         // options: {
