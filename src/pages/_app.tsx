@@ -3,7 +3,7 @@ import type { NextPage } from 'next'
 import type { AppProps } from 'next/app'
 import '@/styles/app.css'
 
-export type NextPageWithLayout = NextPage & {
+type NextPageWithLayout = NextPage & {
     getLayout?: (page: ReactElement) => ReactNode,
 }
 
