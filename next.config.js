@@ -1,3 +1,7 @@
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+    enabled: process.env.ANALYZE === 'true',
+})
+
 const defaultImageSizes = [80, 160, 320, 480, 768, 1024, 1280]
 
 /** @type {import('next').NextConfig} */
@@ -12,4 +16,4 @@ const nextConfig = {
     },
 }
 
-module.exports = nextConfig
+module.exports = withBundleAnalyzer(nextConfig)
