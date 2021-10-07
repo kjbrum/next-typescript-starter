@@ -10,11 +10,15 @@
     "export": "next export",
     "start": "next start",
     "lint": "next lint",
-    "format": "prettier --write \"**/*.{js,ts,jsx,tsx}\""
+    "format": "prettier --write \"**/*.{js,ts,jsx,tsx}\"",
+    "analyze": "ANALYZE=true next build",
+    "analyze:server": "BUNDLE_ANALYZE=server next build",
+    "analyze:browser": "BUNDLE_ANALYZE=browser next build"
   },
   "dependencies": {
     "@emotion/babel-plugin": "^11.3.0",
     "@emotion/react": "^11.4.1",
+    "@next/bundle-analyzer": "^11.1.2",
     "classnames": "^2.3.1",
     "next": "^11.1.2",
     "next-plugin-preact": "^3.0.6",
