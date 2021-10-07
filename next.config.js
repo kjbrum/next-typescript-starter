@@ -1,6 +1,7 @@
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
     enabled: process.env.ANALYZE === 'true',
 })
+const withPreact = require('next-plugin-preact')
 
 const defaultImageSizes = [80, 160, 320, 480, 768, 1024, 1280]
 
@@ -16,4 +17,4 @@ const nextConfig = {
     },
 }
 
-module.exports = withBundleAnalyzer(nextConfig)
+module.exports = withBundleAnalyzer(withPreact(nextConfig))
