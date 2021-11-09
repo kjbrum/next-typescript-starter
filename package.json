@@ -25,7 +25,8 @@
     "preact-render-to-string": "^5.1.19",
     "react": "npm:@preact/compat",
     "react-dom": "npm:@preact/compat",
-    "react-ssr-prepass": "npm:preact-ssr-prepass"
+    "react-ssr-prepass": "npm:preact-ssr-prepass",
+    "tslib": "^2.3.1"
   },
   "devDependencies": {
     "@simplefocus/prettier-config": "^1.0.2",
