@@ -13,7 +13,6 @@ const breakpoints = {
 const fluidValue = (min, max) => polished.between(min, max, '20rem', '90rem')
 
 module.exports = {
-    mode: 'jit',
     content: [
         './src/components/**/*.{js,jsx,ts,tsx}',
         './src/contexts/**/*.{js,jsx,ts,tsx}',
@@ -25,7 +24,6 @@ module.exports = {
         './tailwind.variants.ts',
         './tw-safelist.txt',
     ],
-    darkMode: false, // Options: false/media/class
     theme: {
         extend: {
             spacing: {

@@ -22,9 +22,14 @@
     "removeComments": true,
     "jsx": "preserve",
     "paths": {
-      "@/*": ["./src/*"],
-      "@root/*": ["./*"]
-    }
+      "@/*": [
+        "./src/*"
+      ],
+      "@root/*": [
+        "./*"
+      ]
+    },
+    "incremental": true
   },
   "include": [
     "next-env.d.ts",

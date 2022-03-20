@@ -6,7 +6,7 @@ const Header = () => (
         <Flex as={Container} className="content-between items-center">
             <Box className="flex-grow">
                 <Link href="/" className="text-white font-bold">
-                    Simple Focus Next.js Starter
+                    Next + TypeScript + TailwindCSS Starter
                 </Link>
             </Box>
 

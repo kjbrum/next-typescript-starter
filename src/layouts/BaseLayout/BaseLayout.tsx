@@ -10,11 +10,14 @@ const BaseLayout = ({
 }: BaseLayoutProps) => (
     <>
         <Head>
-            <title>{title && `${title} | `}Simple Focus Next.js Starter</title>
+            <title>
+                {title && `${title} | `}Next + TypeScript + TailwindCSS Starter
+            </title>
             <meta
                 name="description"
                 content={
-                    description || 'Simple Focus Next.js starter project demo.'
+                    description ||
+                    'Next + TypeScript + TailwindCSS Starter project demo.'
                 }
             />
             <link rel="icon" href="/favicon.ico" />

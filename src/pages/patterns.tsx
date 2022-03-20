@@ -331,7 +331,7 @@ Patterns.getLayout = function getLayout(page: ReactElement) {
     return (
         <BaseLayout
             title="Patterns"
-            description="Patterns for use with the Simple Focus Next.js Starter."
+            description="Patterns for use with the Next + TypeScript + TailwindCSS Starter."
         >
             {page}
         </BaseLayout>
