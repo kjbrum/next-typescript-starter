@@ -14,20 +14,17 @@ const fluidValue = (min, max) => polished.between(min, max, '20rem', '90rem')
 
 module.exports = {
     mode: 'jit',
-    purge: {
-        content: [
-            './src/components/**/*.{js,jsx,ts,tsx}',
-            './src/layouts/**/*.{js,jsx,ts,tsx}',
-            './src/lib/**/*.{js,jsx,ts,tsx}',
-            './src/pages/**/*.{js,jsx,ts,tsx}',
-            './src/utils/**/*.{js,jsx,ts,tsx}',
-            './tailwind.variants.ts',
-            './tw-safelist.txt',
-        ],
-        // options: {
-        //     safelist: [/^aspect-/],
-        // },
-    },
+    content: [
+        './src/components/**/*.{js,jsx,ts,tsx}',
+        './src/contexts/**/*.{js,jsx,ts,tsx}',
+        './src/hooks/**/*.{js,jsx,ts,tsx}',
+        './src/layouts/**/*.{js,jsx,ts,tsx}',
+        './src/lib/**/*.{js,jsx,ts,tsx}',
+        './src/pages/**/*.{js,jsx,ts,tsx}',
+        './src/utils/**/*.{js,jsx,ts,tsx}',
+        './tailwind.variants.ts',
+        './tw-safelist.txt',
+    ],
     darkMode: false, // Options: false/media/class
     theme: {
         extend: {

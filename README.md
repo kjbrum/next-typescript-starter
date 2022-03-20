@@ -1,4 +1,4 @@
-# Simple Focus Next.js Starter
+# Next + TypeScript + TailwindCSS starter
 ## Getting Started
 
 First, run the development server:
